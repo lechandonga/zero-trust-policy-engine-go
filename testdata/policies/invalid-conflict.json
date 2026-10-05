@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "rules": [
+    {
+      "id": "allow-x",
+      "effect": "allow",
+      "subjects": ["user:bob"],
+      "actions": ["read"],
+      "resources": ["doc/x"],
+      "priority": 5
+    },
+    {
+      "id": "deny-x",
+      "effect": "deny",
+      "subjects": ["user:bob"],
+      "actions": ["read"],
+      "resources": ["doc/x"],
+      "priority": 5
+    }
+  ]
+}

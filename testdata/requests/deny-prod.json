@@ -1,0 +1,5 @@
+{
+  "subject": "user:alice",
+  "action": "deploy",
+  "resource": "env/prod/billing"
+}

@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "description": "baseline zero-trust policy",
+  "rules": [
+    {
+      "id": "deny-all-external",
+      "description": "外部网络一律拒绝",
+      "effect": "deny",
+      "subjects": ["*"],
+      "actions": ["*"],
+      "resources": ["**"],
+      "conditions": [
+        {"key": "network", "op": "eq", "values": ["external"]}
+      ],
+      "priority": 100
+    },
+    {
+      "id": "allow-admin-read",
+      "description": "管理员只读访问审计桶",
+      "effect": "allow",
+      "subjects": ["group:admins", "user:alice"],
+      "actions": ["read"],
+      "resources": ["bucket/audit/*"],
+      "priority": 10
+    },
+    {
+      "id": "allow-ci-deploy",
+      "description": "CI 服务账号可部署到 sandbox",
+      "effect": "allow",
+      "subjects": ["svc:ci"],
+      "actions": ["deploy"],
+      "resources": ["env/sandbox/**"],
+      "conditions": [
+        {"key": "network", "op": "eq", "values": ["internal"]}
+      ],
+      "priority": 10
+    },
+    {
+      "id": "deny-prod-write",
+      "description": "任何人不得写生产环境（显式高优先级 deny）",
+      "effect": "deny",
+      "subjects": ["*"],
+      "actions": ["write", "deploy", "delete"],
+      "resources": ["env/prod/**"],
+      "priority": 200
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "subject": "user:alice",
+  "action": "read",
+  "resource": "bucket/audit/2026-10.log"
+}
