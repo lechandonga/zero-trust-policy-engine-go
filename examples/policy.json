@@ -1,0 +1,30 @@
+{
+  "version": "v1",
+  "subjects": ["alice", "bob", "svc-deploy"],
+  "rules": [
+    {
+      "id": "allow-alice-read-docs",
+      "effect": "allow",
+      "subjects": ["alice"],
+      "resources": ["doc"],
+      "actions": ["read"],
+      "priority": 10
+    },
+    {
+      "id": "deny-bob-delete",
+      "effect": "deny",
+      "subjects": ["bob"],
+      "resources": ["*"],
+      "actions": ["delete"],
+      "priority": 100
+    },
+    {
+      "id": "allow-deploy-restart",
+      "effect": "allow",
+      "subjects": ["svc-deploy"],
+      "resources": ["prod-cluster"],
+      "actions": ["restart"],
+      "priority": 10
+    }
+  ]
+}

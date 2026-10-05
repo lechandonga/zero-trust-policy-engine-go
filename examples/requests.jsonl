@@ -1,0 +1,7 @@
+{"subject":"alice","resource":"doc","action":"read"}
+{"subject":"bob","resource":"doc","action":"delete"}
+{"subject":"bob","resource":"doc","action":"read"}
+{"subject":"mallory","resource":"doc","action":"read"}
+{"subject":"alice","resource":"","action":"read"}
+{"subject":"svc-deploy","resource":"prod-cluster","action":"restart"}
+not-a-json-request
